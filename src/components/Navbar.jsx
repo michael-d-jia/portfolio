@@ -22,6 +22,16 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-md border border-blue-300 text-blue-300 hover:bg-blue-400/10 transition-colors font-mono"
+            >
+              Resume
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
