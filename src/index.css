@@ -1,15 +1,105 @@
 @import "tailwindcss";
 
+@theme {
+  --color-bg: #0a0a0f;
+  --color-bg-soft: #12121a;
+  --color-text: #f5f5f5;
+  --color-text-muted: #a3a3a3;
+  --color-text-dim: #6b7280;
+  --color-accent: #6366f1;
+  --color-accent-soft: #a5b4fc;
+  --color-border: #1f1f2b;
+  --color-term: #86efac;
+  --color-term-bright: #bbf7d0;
+  --color-term-prompt: #22c55e;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  background-color: #0a192f;
-  color: #ccd6f6;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+/* Spotlight grid background */
+.grid-bg {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 100%);
+}
+
+/* Animated conic gradient border */
+.gradient-border {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0 72%,
+    #6366f1 86%,
+    #a78bfa 100%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  animation: spin 4s linear infinite;
+}
+.gradient-border:hover::before {
+  opacity: 1;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Terminal blinking cursor */
+.blink {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* CRT scanlines */
+.scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 148, 0.06) 0px,
+    transparent 2px,
+    transparent 4px
+  );
 }

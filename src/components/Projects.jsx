@@ -1,26 +1,6 @@
-const projects = [
-  {
-    title: 'RL Market Maker',
-    description:
-      'Simulated limit order book environment built from scratch to train a reinforcement-learning agent on optimal bid-ask pricing. MDP formulation with Q-learning and DQN, evaluated against a random baseline over 1,000 episodes. Led a team of 3.',
-    tech: ['Python', 'OpenAI Gym', 'NumPy', 'Pandas', 'Matplotlib'],
-    github: 'https://github.com/michael-d-jia/rl-market-maker',
-  },
-  {
-    title: 'Personal Automation Agent',
-    description:
-      'Discord bot deployed as a systemd service on AWS EC2 that automates technical interview prep and academic task tracking. Gemini API parses syllabus PDFs into SQLite tasks; a daily cron generates type-hinted LeetCode starter files and commits them to GitHub.',
-    tech: ['Python', 'SQLite', 'Discord.py', 'Gemini API', 'AWS EC2'],
-    github: 'https://github.com/michael-d-jia/openclaw',
-  },
-  {
-    title: 'Pathfinding Visualizer',
-    description:
-      'Interactive pathfinding algorithm visualizer — compare BFS, DFS, Dijkstra, and A* in real time on a weighted grid with maze generation.',
-    tech: ['JavaScript', 'React', 'Vite'],
-    github: 'https://github.com/michael-d-jia/pathfinding-visualizer',
-  },
-]
+import SectionHeading from './SectionHeading'
+import Reveal from './Reveal'
+import { projects } from '../data'
 
 function GithubIcon() {
   return (
@@ -39,56 +19,52 @@ function GithubIcon() {
 export default function Projects() {
   return (
     <section id="projects" className="py-24 px-6">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
-          <span className="text-blue-300 font-mono mr-3">02.</span>
-          Some Things I&apos;ve Built
-        </h2>
-        <div className="h-px bg-slate-800 mb-10" />
-        <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <li
-              key={project.title}
-              className="group flex flex-col p-6 rounded-lg bg-slate-900/40 border border-slate-800 hover:border-blue-400/40 hover:-translate-y-1 transition-all"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="w-10 h-10 text-blue-300"
-                  aria-hidden="true"
-                >
-                  <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" />
-                </svg>
+      <div className="max-w-4xl mx-auto">
+        <Reveal>
+          <SectionHeading number="03" title="Some Things I've Built" />
+        </Reveal>
+        <ul className="grid md:grid-cols-2 gap-5">
+          {projects.map((project, i) => (
+            <Reveal key={project.title} delay={i * 90}>
+              <li className="gradient-border h-full">
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${project.title} on GitHub`}
-                  className="text-slate-400 hover:text-blue-300 transition-colors"
+                  className="relative z-10 m-px flex h-[calc(100%-2px)] flex-col rounded-[13px] bg-bg-soft p-6 hover:bg-[#16161f] transition-colors"
                 >
-                  <GithubIcon />
+                  <div className="flex items-center justify-between mb-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="w-9 h-9 text-accent-soft"
+                      aria-hidden="true"
+                    >
+                      <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" />
+                    </svg>
+                    <span className="text-text-dim hover:text-accent-soft transition-colors">
+                      <GithubIcon />
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-text mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-text-muted text-sm leading-relaxed flex-1">
+                    {project.description}
+                  </p>
+                  <ul className="flex flex-wrap gap-x-3 gap-y-1 mt-4 font-mono text-xs text-text-dim">
+                    {project.tech.map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
+                  </ul>
                 </a>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">
-                <a href={project.github} target="_blank" rel="noopener noreferrer">
-                  {project.title}
-                </a>
-              </h3>
-              <p className="text-slate-400 text-sm leading-relaxed flex-1">
-                {project.description}
-              </p>
-              <ul className="flex flex-wrap gap-x-3 gap-y-1 mt-4 font-mono text-xs text-slate-500">
-                {project.tech.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </li>
+              </li>
+            </Reveal>
           ))}
         </ul>
       </div>

@@ -1,41 +1,55 @@
+import Reveal from './Reveal'
+import Magnetic from './Magnetic'
+import { contact } from '../data'
+
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 px-6">
-      <div className="max-w-2xl mx-auto text-center">
-        <p className="text-blue-300 font-mono text-sm mb-4">03. What&apos;s Next?</p>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-          Get In Touch
-        </h2>
-        <p className="text-slate-400 leading-relaxed mb-10">
-          I&apos;m currently looking for new opportunities and would love to hear
-          from you. Whether you have a question, an idea, or just want to say hi,
-          my inbox is always open.
-        </p>
-        <div className="flex items-center justify-center gap-4 flex-wrap">
-          <a
-            href="mailto:jia.mich@northeastern.edu"
-            className="px-8 py-4 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition-colors font-mono text-sm"
-          >
-            Say Hello
-          </a>
-          <a
-            href="https://github.com/michael-d-jia"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-4 rounded-md border border-slate-700 text-slate-200 hover:border-blue-300 hover:text-blue-300 transition-colors font-mono text-sm"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/micha-jia"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-4 rounded-md border border-slate-700 text-slate-200 hover:border-blue-300 hover:text-blue-300 transition-colors font-mono text-sm"
-          >
-            LinkedIn
-          </a>
+    <section id="contact" className="py-28 px-6">
+      <Reveal>
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-accent-soft font-mono text-sm mb-4">
+            04. What&apos;s Next?
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-text mb-6 tracking-tight">
+            Get In Touch
+          </h2>
+          <p className="text-text-muted leading-relaxed mb-10">
+            I&apos;m currently looking for new opportunities and would love to
+            hear from you. Whether you have a question, an idea, or just want to
+            say hi, my inbox is always open.
+          </p>
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            <Magnetic>
+              <a
+                href={`mailto:${contact.email}`}
+                className="inline-block px-8 py-4 rounded-md bg-accent text-white hover:bg-accent/85 transition-colors font-mono text-sm"
+              >
+                Say Hello
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href={contact.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-8 py-4 rounded-md border border-border text-text-muted hover:border-accent/60 hover:text-accent-soft transition-colors font-mono text-sm"
+              >
+                GitHub
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href={contact.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-8 py-4 rounded-md border border-border text-text-muted hover:border-accent/60 hover:text-accent-soft transition-colors font-mono text-sm"
+              >
+                LinkedIn
+              </a>
+            </Magnetic>
+          </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }
