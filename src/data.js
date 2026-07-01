@@ -85,7 +85,7 @@ export const projects = [
     description:
       'Interactive pathfinding algorithm visualizer — compare BFS, DFS, Dijkstra, and A* in real time on a weighted grid with maze generation.',
     tech: ['JavaScript', 'React', 'Vite'],
-    github: 'https://github.com/michael-d-jia/pathfinding-visualizer',
+    github: 'https://michael-d-jia.github.io/pathfinding-visualizer/',
   },
 ]
 
